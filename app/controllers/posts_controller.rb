@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	
 	def index
 		@posts = Post.all
 	end
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
 	  @post.title = params[:title]
 	  @post.description = params[:description]
 	  @post.save
+		
 	  redirect_to post_path(@post)
 	end
 
@@ -26,6 +28,8 @@ class PostsController < ApplicationController
 	def update
 	  @post = Post.find(params[:id])
 	  @post.update(params.require(:post).permit(:title, :description))
+		
 	  redirect_to post_path(@post)
 	end
+	
 end
